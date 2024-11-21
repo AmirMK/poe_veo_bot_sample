@@ -1,4 +1,4 @@
-# Documentation for `veo_calls` Library
+# `veo_calls` for Veo API
 
 The `veo_calls` Python library provides a simple interface for using a video generation model in Google Cloud Platform (GCP). This document explains the usage of the library, its functions, parameters, and examples.
 
