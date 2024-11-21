@@ -102,7 +102,7 @@ LENGTH = 6
 IMAGE = None
 
 success, res = veo.video_generation(PROJECT_ID, MODEL, PROMPT, IMAGE, SAMPLE_COUNT, ASPECT_RATIO, LENGTH)
-veo.retrieve_videos(res, success, prefix='my_text_vide')
+veo.retrieve_videos(res, success, prefix='my_text_video')
 ```
 
 ### 2. Generate One Video from Image and Text
@@ -119,7 +119,7 @@ LENGTH = 6
 IMAGE = {'image_binary': image_binary, 'mimeType': 'jpeg'}
 
 success, res = veo.video_generation(PROJECT_ID, MODEL, PROMPT, IMAGE, SAMPLE_COUNT, ASPECT_RATIO, LENGTH)
-veo.retrieve_videos(res, success, prefix='my_image_vide')
+veo.retrieve_videos(res, success, prefix='my_image_video')
 ```
 
 
