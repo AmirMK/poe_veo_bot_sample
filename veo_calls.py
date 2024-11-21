@@ -20,7 +20,7 @@ def send_request_to_google_api(api_endpoint, data=None):
     creds, project = google.auth.default()
 
     #  Get access token calling API outside of GCP
-    '''
+    """
     json_url = "path_to_service_account_json_key"
     response = requests.get(json_url)
     if response.status_code != 200:
@@ -33,7 +33,7 @@ def send_request_to_google_api(api_endpoint, data=None):
         json.dump(json_data, json_file, indent=4)
 
     credentials, project = load_credentials_from_file('credentials.json')
-    '''
+    """
 
 
 
