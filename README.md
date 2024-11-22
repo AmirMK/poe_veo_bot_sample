@@ -7,16 +7,37 @@ This repository provides a complete implementation of a bot using **Veo** for vi
 ## File Descriptions
 
 ### 1. `app.py`
-This is the main application file that sets up the bot for Poe.com and integrates the `veo_calls` library to call the Veo video generation model.
+The main application file for setting up the Veo bot on Poe.com. This file uses the `veo_calls` library to interact with the Veo video generation model and manages the bot's behavior.
 
 #### Key Features:
-- Accepts user inputs (text and/or image) via Poe's platform.
-- Calls the Veo model to generate videos based on user inputs.
-- Sends the generated videos back to the user as a response.
+- Accepts user inputs (text and/or image) from Poe.com.
+- Calls the Veo video generation model to create videos based on the inputs.
+- Sends the generated video back to the user as an attachment.
 
-#### Notes:
-- `veo_calls.py` is used as a library to handle Veo API calls.
-- Environment variables like `POE_ACCESS_KEY` and `ACCESS_TOKEN` must be provided for proper functionality.
+#### Required Environment Variables:
+- **`POE_ACCESS_KEY`**:  
+  The access key required to authenticate the Poe bot.
+  
+- **`PROJECT_ID`**:  
+  The Google Cloud Platform (GCP) project id where the Veo model is deployed.
+
+#### Current Configuration:
+The following parameters are hardcoded in the current implementation:
+- **`MODEL`**: The Veo model name (e.g., `"veo-001-preview-0815"`).
+- **`SAMPLE_COUNT`**: Number of videos to generate (currently set to `1`).
+- **`ASPECT_RATIO`**: Aspect ratio of the video (currently set to `"9:16"`).
+- **`LENGTH`**: Duration of the video in seconds (currently set to `6`).
+
+#### Future Enhancements:
+These hardcoded parameters (e.g., `MODEL`, `SAMPLE_COUNT`, `ASPECT_RATIO`, and `LENGTH`) can be modified to accept user inputs, allowing more flexibility and customization in video generation.
+
+#### Integration with `veo_calls`:
+The `app.py` file imports and uses the `veo_calls` library to:
+- Handle API calls to the Veo video generation model.
+- Process the generated videos for returning to the user.
+- Perform error handling and ensure smooth bot operation.
+
+This script provides the interface for deploying the bot on Poe.com using Cloud Run.
 
 ---
 
