@@ -1,4 +1,4 @@
-# Veo Bot Repository Documentation
+# Veo Bot for Poe.com - Repository Documentation
 
 This repository provides a complete implementation of a bot using **Veo** for video generation, hosted on **Poe.com** and deployed via **Google Cloud Run**. Below is the detailed documentation for each component of the repository.
 
