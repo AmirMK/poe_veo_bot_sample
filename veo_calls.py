@@ -1,7 +1,9 @@
 import requests
 import time
 import google.auth
+from google.oauth2 import service_account
 import google.auth.transport.requests
+from google.auth.transport.requests import Request
 import base64
 
 
@@ -19,28 +21,22 @@ def send_request_to_google_api(api_endpoint, data=None):
     # Get access token calling API
     creds, project = google.auth.default()
 
-    #  Get access token calling API outside of GCP
-    """
-    json_url = "path_to_service_account_json_key"
-    response = requests.get(json_url)
-    if response.status_code != 200:
-        raise ValueError(f"Failed to download JSON credentials from {json_url}")
-    
-    json_data = json.loads(response.text)
-    file_path = "credentials.json"
-    
-    with open(file_path, "w") as json_file:
-        json.dump(json_data, json_file, indent=4)
-
-    credentials, project = load_credentials_from_file('credentials.json')
-    """
-
-
-
     auth_req = google.auth.transport.requests.Request()
     creds.refresh(auth_req)
     access_token = creds.token
+
+    #  Get access token calling API outside of GCP
+    """
+    json_keyfile = "xxx.json"
+    credentials = service_account.Credentials.from_service_account_file(
+        json_keyfile,
+        scopes=["https://www.googleapis.com/auth/cloud-platform"]
+    )
+    auth_req = Request()
+    credentials.refresh(auth_req)
+    access_token = credentials.token
     
+    """
     
     headers = {
         'Authorization': f'Bearer {access_token}',
