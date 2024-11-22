@@ -18,7 +18,9 @@ def send_request_to_google_api(api_endpoint, data=None):
     Returns:
         The response from the Google API.
     """
-    # Get access token calling API
+
+    
+    # Get access token calling API inside GCP
     creds, project = google.auth.default()
 
     auth_req = google.auth.transport.requests.Request()
@@ -65,21 +67,18 @@ def fetch_operation(_FETCH_API_ENDPOINT,lro_name):
      'operationName': lro_name}
   # The generation usually takes 2 minutes. Loop 30 times, around 5 minutes.
     for i in range(30):
-        resp = send_request_to_google_api(_FETCH_API_ENDPOINT, request)
-        print(f'waiting...')
+        resp = send_request_to_google_api(_FETCH_API_ENDPOINT, request)        
         if 'done' in resp and resp['done']:
             return resp
         time.sleep(10)
 
-def text_to_video(_PREDICT_API_ENDPOINT,_FETCH_API_ENDPOINT,prompt, seed, aspect_ratio, sample_count, length):  
-    print('text')
+def text_to_video(_PREDICT_API_ENDPOINT,_FETCH_API_ENDPOINT,prompt, seed, aspect_ratio, sample_count, length):          
     req = compose_videogen_request(prompt, None, seed, aspect_ratio, sample_count, length)
     resp = send_request_to_google_api(_PREDICT_API_ENDPOINT, req)
     return fetch_operation(_FETCH_API_ENDPOINT,resp['name'])
 
 
-def image_to_video(_PREDICT_API_ENDPOINT,_FETCH_API_ENDPOINT,prompt, image, seed, aspect_ratio, sample_count, length): 
-    print('image')
+def image_to_video(_PREDICT_API_ENDPOINT,_FETCH_API_ENDPOINT,prompt, image, seed, aspect_ratio, sample_count, length):       
     req = compose_videogen_request(prompt, image, seed, aspect_ratio, sample_count, length)
     resp = send_request_to_google_api(_PREDICT_API_ENDPOINT, req)  
     return fetch_operation(_FETCH_API_ENDPOINT,resp['name'])
