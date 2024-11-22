@@ -44,6 +44,16 @@ This script provides the interface for deploying the bot on Poe.com using Cloud 
 ### 2. `veo_calls.py`
 This library handles interactions with the Veo video generation API.
 
+## Authentication
+
+By default, the library assumes that the app is running within GCP. In this scenario, the library uses the default GCP authentication mechanism, which automatically authenticates the application using the service account attached to the GCP environment (e.g., Compute Engine, Cloud Run).
+
+### Running Outside of GCP
+
+If the app is deployed outside of GCP, authentication requires a service account key in JSON format. To enable this:
+1. Generate a JSON key for the service account with the necessary permissions.
+2. The `send_request_to_google_api` function in the library includes commented-out code for explicitly loading the credentials from a JSON key. Uncomment this section to use it for authentication when running the app outside of GCP.
+
 #### Functions:
 - **`video_generation`**: Generates videos based on a provided text prompt, optional image, and other specifications.
 
