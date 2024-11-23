@@ -129,7 +129,7 @@ class EnhancedVideoResponsePoeBot(fp.PoeBot):
             yield fp.PartialResponse(text=f"Error processing the request: {e}")
 
     async def get_settings(self, setting: fp.SettingsRequest) -> fp.SettingsResponse:
-        return fp.SettingsResponse(allow_attachments=True)
+        return fp.SettingsResponse(allow_attachments=False)
 
 # Set up the Poe bot with the required access key
 poe_bot = EnhancedVideoResponsePoeBot()
