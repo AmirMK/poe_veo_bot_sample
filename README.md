@@ -1,6 +1,6 @@
 # Veo Bot for Poe.com - Repository Documentation
 
-This repository provides a complete implementation of a bot using **Veo** for video generation, hosted on **Poe.com** and deployed via **Google Cloud Run**. Below is the detailed documentation for each component of the repository.
+This repository provides a complete implementation of a bot using **Veo** for video generation, hosted on **Poe.com**. Below is the detailed documentation for each component of the repository.
 
 **Note:**  
 The `app.py` code is designed to handle both text-to-video and image-to-video generation. However, by default, the bot settings have `allow_attachments` set to `False`, which disables image attachments. If users wish to enable image-to-video generation, they only need to change the `allow_attachments` setting to `True`. No additional modifications are required.
